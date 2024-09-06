@@ -1,0 +1,14 @@
+{
+  "name": "knights-travails",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.30.0"
+  }
+}
