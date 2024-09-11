@@ -4,11 +4,11 @@ class ChessSquare {
   #minBoundary;
   #maxBoundary;
 
-  constructor(row, col, squaresPerRow) {
+  constructor(row, col, totalSquares) {
     this.#row = row;
     this.#col = col;
     this.#minBoundary = 0;
-    this.#maxBoundary = squaresPerRow - 1;
+    this.#maxBoundary = Math.sqrt(totalSquares) - 1;
     this.#checkBoundaryError();
   }
 
