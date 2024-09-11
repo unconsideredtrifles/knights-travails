@@ -1,6 +1,6 @@
 import ChessSquare from './chess-square.js';
 import AdjacencyList from './graph-utils.js';
-import { convertVertixIdxToSquare, convertSquareToVertixIdx } from './util.js';
+import { convertVertixIdxToSquare, convertSquareToVertixIdx } from './common-util.js';
 
 class KnightMovesEngine {
   #totalSquares;
