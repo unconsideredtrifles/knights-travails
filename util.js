@@ -12,7 +12,7 @@ const convertVertixIdxToSquare = function convertVertixIdxToSquare(
   totalSquares,
 ) {
   const row = Math.floor(vertixIdx / Math.sqrt(totalSquares));
-  const col = vertixIdx % squaresPerRow;
+  const col = vertixIdx % Math.sqrt(totalSquares);
   return [row, col]
 };
 
