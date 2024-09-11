@@ -1,4 +1,4 @@
-import KnightMovesEngine from "./chess-engine.js";
+import KnightMovesEngine from './chess-engine.js';
 import { convertSquareToVertixIdx, isSameSquare } from './common-util.js';
 
 class KnightShortestPathFinder {
@@ -33,37 +33,35 @@ class KnightShortestPathFinder {
       const nearbySquares = this.#movesEngine.lookupNearestHops(curSquare);
       for (let i = 0; i < nearbySquares.length; i += 1) {
         const squareIdx = convertSquareToVertixIdx(
-          nearbySquares[i], 
+          nearbySquares[i],
           this.#totalSquares,
         );
-        if (this.#distances[squareIdx] !== -1) {
-          continue;
+        if (this.#distances[squareIdx] === -1) {
+          this.#distances[squareIdx] = this.#distances[curSquareIdx] + 1;
+          this.#parents[squareIdx] = curSquare;
+          if (isSameSquare(nearbySquares[i], this.#targetSquare)) {
+            return;
+          }
+          queue.push(nearbySquares[i]);
         }
-        this.#distances[squareIdx] = this.#distances[curSquareIdx] + 1;
-        this.#parents[squareIdx] = curSquare;
-        if (isSameSquare(nearbySquares[i], this.#targetSquare)) {
-          return;
-        }
-        queue.push(nearbySquares[i]);
       }
     }
   }
 
   #buildShortestPath() {
+    const shortestPath = [this.#targetSquare];
     const targetIdx = convertSquareToVertixIdx(
-      this.#targetSquare, 
+      this.#targetSquare,
       this.#totalSquares,
     );
-    const shortestPath = [this.#targetSquare];
-    let currentIdx = targetIdx;
-    while (true) {
-      let parentSquare = this.#parents[currentIdx];
+    let curIdx = targetIdx;
+    let parentSquare = this.#parents[curIdx];
+    while (!isSameSquare(parentSquare, this.#startingSquare)) {
       shortestPath.unshift(parentSquare);
-      if (isSameSquare(parentSquare, this.#startingSquare)) {
-        break;
-      }
-      currentIdx = convertSquareToVertixIdx(parentSquare, this.#totalSquares);
+      curIdx = convertSquareToVertixIdx(parentSquare, this.#totalSquares);
+      parentSquare = this.#parents[curIdx];
     }
+    shortestPath.unshift(this.#startingSquare);
     return shortestPath;
   }
 }

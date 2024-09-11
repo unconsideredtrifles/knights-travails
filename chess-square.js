@@ -23,7 +23,7 @@ class ChessSquare {
   #checkBoundaryError() {
     if (
       this.constructor.checkIfExceedMinBoundary(
-        this.#row, 
+        this.#row,
         this.#col,
         this.#minBoundary,
       ) || this.constructor.checkIfExceedMaxBoundary(
@@ -36,7 +36,7 @@ class ChessSquare {
     }
   }
 
-  static checkIfExceedMinBoundary(row, col, minNum = 0)  {
+  static checkIfExceedMinBoundary(row, col, minNum = 0) {
     if (row < minNum || col < minNum) {
       return true;
     }
@@ -51,22 +51,22 @@ class ChessSquare {
   }
 
   getNearestKnightMoves() {
-    let knightMoves = []
+    const knightMoves = [];
     const coordModifiers = [[1, 2], [1, -2], [-1, 2], [-1, -2]];
     coordModifiers.forEach((eachModifier) => {
       knightMoves.push(
         [
-          this.#row + eachModifier[0], 
+          this.#row + eachModifier[0],
           this.#col + eachModifier[1],
-        ]
+        ],
       );
     });
     coordModifiers.forEach((eachModifier) => {
       knightMoves.push(
         [
-          this.#row + eachModifier[1], 
+          this.#row + eachModifier[1],
           this.#col + eachModifier[0],
-        ]
+        ],
       );
     });
 
@@ -74,10 +74,9 @@ class ChessSquare {
       (eachMove) => !(
         this.constructor.checkIfExceedMinBoundary(...eachMove, this.#minBoundary)
         || this.constructor.checkIfExceedMaxBoundary(...eachMove, this.#maxBoundary)
-      )
+      ),
     );
   }
 }
-
 
 export default ChessSquare;
