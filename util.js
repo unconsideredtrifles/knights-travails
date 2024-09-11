@@ -16,12 +16,12 @@ const convertVertixIdxToSquare = function convertVertixIdxToSquare(
   return [row, col]
 };
 
-const compareSquares = function compareSquares(square1, square2) {
+const isSameSquare = function compareSquares(square1, square2) {
   return (square1[0] === square2[0] && square1[1] === square2[1])
 };
 
 export {
   convertSquareToVertixIdx,
   convertVertixIdxToSquare,
-  compareSquares,
+  isSameSquare,
 };
