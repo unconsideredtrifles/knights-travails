@@ -1,5 +1,5 @@
-import KnightMovesEngine from './chess-engine.js';
-import { convertSquareToVertixIdx, isSameSquare } from './common-util.js';
+import KnightMovesEngine from './chess/chess-engine.js';
+import { convertSquareToVertixIdx, isSameSquare } from './utils/common-utils.js';
 
 class KnightShortestPathFinder {
   #startingSquare;
